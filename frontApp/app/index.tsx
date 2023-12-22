@@ -40,7 +40,26 @@ const Page = () => {
                     <TouchableOpacity style={styles.signUpBtn}>
                         <Text style={styles.signUpText}>Don't have an account? Sign up!</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.appleLoginBtn}>
+                        <View style={styles.loginView}>
+                            <Ionicons name={'logo-apple'} size={32} color={'#fff'} />
+                            <Text style={styles.appleLoginText}>Log in with Apple</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.facebookLoginBtn}>
+                        <View style={styles.loginView}>
+                            <Ionicons name={'logo-facebook'} size={32} color={'#fff'} />
+                            <Text style={styles.facebookLoginText}>Log in with Facebook</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.googleLoginBtn}>
+                        <View style={styles.loginView}>
+                            <Ionicons name={'logo-google'} size={32} color={'#000'} />
+                            <Text style={styles.googleLoginText}>Log in with Google</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
+
 
                 {/* <Button onPress={() => router.push("/register")} title="Open Sign up" />
                 <Link href={"/register"} asChild>
@@ -96,7 +115,7 @@ const styles = StyleSheet.create({
         fontStyle: 'italic'
     },
     loginBtn: {
-        width: '80%',
+        width: '70%',
         borderRadius: 25,
         height: 50,
         alignItems: 'center',
@@ -116,7 +135,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     signUpBtn: {
-        width: '80%',
+        width: '70%',
         borderRadius: 25,
         height: 50,
         alignItems: 'center',
@@ -127,6 +146,54 @@ const styles = StyleSheet.create({
     signUpText: {
         color: '#FFFFFF',
         fontWeight: 'bold',
+    },
+    appleLoginBtn: {
+        width: '70%',
+        borderRadius: 25,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#000000',
+        color: '#FFFFFF',
+        marginTop: 70
+    },
+    appleLoginText: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        marginLeft: '10%',
+        marginRight: '23%'
+    },
+    facebookLoginBtn: {
+        width: '70%',
+        borderRadius: 25,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#466BEDFF',
+        color: '#FFFFFF',
+        marginTop: 20
+    },
+    facebookLoginText: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        marginLeft: '10%',
+        marginRight: '15%'
+    },
+    googleLoginBtn: {
+        width: '70%',
+        borderRadius: 25,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FFFFFF',
+        color: '#FFFFFF',
+        marginTop: 20
+    },
+    googleLoginText: {
+        color: '#000000',
+        fontWeight: 'bold',
+        marginLeft: '10%',
+        marginRight: '20%'
     },
 });
 
