@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, useRouter } from 'expo-router';
 import { Ionicons, MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 
-import { TextInput } from 'react-native-gesture-handler';
-
 const Settings = () => {
     const router = useRouter();
 
@@ -182,11 +180,11 @@ const styles = StyleSheet.create({
         textAlign: 'left'
     },
     logOutBtn: {
-        width: '75%',
+        width: '107%',
         borderRadius: 30,
         height: 50,
         alignItems: 'center',
-        marginLeft: '13%',
+        marginLeft: '-4%',
         marginBottom: '3%',
         justifyContent: 'center',
         backgroundColor: '#BB1313',
