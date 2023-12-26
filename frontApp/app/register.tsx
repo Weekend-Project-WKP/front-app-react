@@ -10,15 +10,7 @@ const Page = () => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require(faceoffImage)} resizeMode="cover" style={styles.image}>
-                <View style={styles.header}>
-                    <View style={styles.headerBtn}>
-                        <TouchableOpacity onPress={() => router.back()}>
-                            <View>
-                                <Ionicons name="arrow-back-circle-outline" size={42} color={'#fff'} />
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+
                 <View style={styles.centerView}>
                     <Text style={styles.text}>Create a free account!</Text>
                     <View style={styles.inputView}>
