@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useRouter } from 'expo-router';
 import { Ionicons, MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 
-const Settings = () => {
+const Profile = () => {
     const router = useRouter();
 
     return (
@@ -20,7 +20,7 @@ const Settings = () => {
 
                 <View style={styles.header2}>
                     <View>
-                        <Text style={styles.headerText}>Settings</Text>
+                        <Text style={styles.headerText}>Profile</Text>
                     </View>
                 </View>
 
@@ -28,7 +28,7 @@ const Settings = () => {
 
             <View>
             <Text style={styles.settingsTitleText}>General</Text>
-                <TouchableOpacity style={styles.settingsBtn} onPress={() => router.push("/profile")}>
+                <TouchableOpacity style={styles.settingsBtn}>
                     <View style={styles.settingsView}>
                         <View style={styles.iconSettings}>
                             <Ionicons name="person-circle-outline" size={32} color="#000" />
@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
         color: 'white',
+        marginLeft: '6.5%',
         fontSize: 36,   
         fontWeight: 'bold',
         justifyContent: 'flex-end'
@@ -192,4 +193,4 @@ const styles = StyleSheet.create({
     },
     
 });
-export default Settings;
+export default Profile;
