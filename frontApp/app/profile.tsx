@@ -32,25 +32,25 @@ const Profile = () => {
             <View>
             <Text style={styles.profileGenTitleText}>Account</Text>
             
-            <View style={styles.settingsView}>
+            <View style={styles.profileView}>
                 <View style={styles.iconSettings}>
                     <MaterialIcons name="date-range" size={32} color="black" />
                 </View>
             <TextInput style={styles.accountText} value = "Date of Birth" editable = {false}/>
             </View>
-            <View style={styles.settingsView}>
+            <View style={styles.profileView}>
                 <View style={styles.iconSettings}>
                     <MaterialIcons name="email" size={32} color="black" />
                 </View>
                 <TextInput style={styles.accountText} value = "Email/Username" editable = {false}/>
             </View>
-            <View style={styles.settingsView}>
+            <View style={styles.profileView}>
                 <View style={styles.iconSettings}>
                     <MaterialIcons name="phone" size={32} color="black" />
                 </View>
                 <TextInput style={styles.accountText} value = "Phone" editable = {false}/>
             </View>
-            <View style={styles.settingsView}>
+            <View style={styles.profileView}>
                 <View style={styles.iconSettings}>
                     <MaterialCommunityIcons name="onepassword" size={32} color="black" />
                 </View>
@@ -61,19 +61,19 @@ const Profile = () => {
 
             <View>
             <Text style={styles.profileVerTitleText}>Verification</Text>
-                <View style={styles.settingsView}>
+                <View style={styles.profileView}>
                     <View style={styles.iconSettings}>
                         <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
                     </View>
                     <TextInput style={styles.accountText} value = "Verify my Email" editable = {false}/> 
                 </View>
-                <View style={styles.settingsView}>
+                <View style={styles.profileView}>
                     <View style={styles.iconSettings}>
                         <Ionicons name="checkmark-done-circle" size={32} color="black" />
                     </View>
                     <TextInput style={styles.accountText} value = "Verify my ID" editable = {false}/> 
                 </View>
-                <View style={styles.settingsView}>
+                <View style={styles.profileView}>
                     <View style={styles.iconSettings}>
                         <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
                     </View>
@@ -81,10 +81,10 @@ const Profile = () => {
                 </View>
             </View>
 
-            <View style={styles.logOutBtnTitleText} >
-                <TouchableOpacity style={styles.logOutBtn}>
-                    <View style={styles.settingsView}>
-                        <Text style={styles.logOutBtnText}>Edit Profile</Text>
+            <View style={styles.edtBtnTitleText} >
+                <TouchableOpacity style={styles.edtBtn}>
+                    <View style={styles.profileView}>
+                        <Text style={styles.edtBtnText}>Edit Profile</Text>
                         <Ionicons name="create" size={32} color="#000" />
                     </View>
                 </TouchableOpacity>
@@ -135,21 +135,10 @@ const styles = StyleSheet.create({
         marginBottom: '1%',
         fontSize: 19,
     },
-    settingsView: {
+    profileView: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-    },
-    settingsBtn: {
-        width: '70%',
-        borderRadius: 15,
-        height: 50,
-        alignItems: 'center',
-        marginLeft: '15%',
-        marginBottom: '3%',
-        justifyContent: 'center',
-        backgroundColor: '#FFFFFF',
-        color: '#FFFFFF'
     },
     accountText: {
         width: '70%',
@@ -159,20 +148,13 @@ const styles = StyleSheet.create({
         marginLeft: '2%',
         marginBottom: '3%',
         marginTop: '4%',
-        justifyContent: 'center',
-       
-    },
-    settingsBtnText: {
-        color: '#000000',
-        fontWeight: 'bold',
-        width: '66%',
-        textAlign: 'left'
+        justifyContent: 'center'
     },
     iconSettings: {
         marginLeft: '20%',
         marginRight: '0%',
     },
-    logOutBtnTitleText: {
+    edtBtnTitleText: {
         color: '#FFFFFF',
         fontWeight: 'bold',
         width: '66%',
@@ -183,13 +165,13 @@ const styles = StyleSheet.create({
         fontSize: 19, 
         alignItems: 'center'
     },
-    logOutBtnText: {
+    edtBtnText: {
         color: '#FFFFFF',
         fontWeight: 'bold',
         width: '45%',
         textAlign: 'center'
     },
-    logOutBtn: {
+    edtBtn: {
         width: '65%',
         borderRadius: 30,
         height: 50,
@@ -199,15 +181,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#e0a5a5',
         color: '#FFFFFF'
-    },
-
-
-
-    image: {
-   
-        borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
-        width: 100,
-        height: 100
     },
     imageCircle: {
         borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
