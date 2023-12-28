@@ -37,7 +37,10 @@ const Page = () => {
                             <Ionicons name={'arrow-forward-circle'} size={32} color={'#fff'} />
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.signUpBtn}>
+                    <TouchableOpacity
+                        style={styles.signUpBtn}
+                        onPress={() => router.push("/register")}
+                    >
                         <Text style={styles.signUpText}>Don't have an account? Sign up!</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.appleLoginBtn}>
@@ -60,7 +63,7 @@ const Page = () => {
                     </TouchableOpacity>
                 </View>
 
-                <Button onPress={() => router.push('/settings')} title="Settings" />
+                {/* <Button onPress={() => router.push('/settings')} title="Settings" /> */}
 
                 {/* <Button onPress={() => router.push("/register")} title="Open Sign up" />
                 <Link href={"/register"} asChild>
