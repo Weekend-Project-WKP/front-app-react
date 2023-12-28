@@ -28,67 +28,65 @@ const Profile = () => {
                 <Image source={require(userImage)} resizeMode='cover' style={styles.imageCircle2}>
                 </Image>
             </TouchableHighlight>
-
-            <View>
-            <Text style={styles.profileGenTitleText}>Account</Text>
-            
-            <View style={styles.profileView}>
-                <View style={styles.iconSettings}>
-                    <MaterialIcons name="date-range" size={32} color="black" />
-                </View>
-            <TextInput style={styles.accountText} value = "Date of Birth" editable = {false}/>
-            </View>
-            <View style={styles.profileView}>
-                <View style={styles.iconSettings}>
-                    <MaterialIcons name="email" size={32} color="black" />
-                </View>
-                <TextInput style={styles.accountText} value = "Email/Username" editable = {false}/>
-            </View>
-            <View style={styles.profileView}>
-                <View style={styles.iconSettings}>
-                    <MaterialIcons name="phone" size={32} color="black" />
-                </View>
-                <TextInput style={styles.accountText} value = "Phone" editable = {false}/>
-            </View>
-            <View style={styles.profileView}>
-                <View style={styles.iconSettings}>
-                    <MaterialCommunityIcons name="onepassword" size={32} color="black" />
-                </View>
-                <TextInput style={styles.accountText} value = "Password" editable = {false}/> 
-            </View>
-           
-            </View>
-
-            <View>
-            <Text style={styles.profileVerTitleText}>Verification</Text>
-                <View style={styles.profileView}>
-                    <View style={styles.iconSettings}>
-                        <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
-                    </View>
-                    <TextInput style={styles.accountText} value = "Verify my Email" editable = {false}/> 
-                </View>
-                <View style={styles.profileView}>
-                    <View style={styles.iconSettings}>
-                        <Ionicons name="checkmark-done-circle" size={32} color="black" />
-                    </View>
-                    <TextInput style={styles.accountText} value = "Verify my ID" editable = {false}/> 
-                </View>
-                <View style={styles.profileView}>
-                    <View style={styles.iconSettings}>
-                        <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
-                    </View>
-                    <TextInput style={styles.accountText} value = "Verify my Phone" editable = {false}/> 
-                </View>
-            </View>
-
-            <View style={styles.edtBtnTitleText} >
-                <TouchableOpacity style={styles.edtBtn}>
+            <ScrollView>
+                <View>
+                    <Text style={styles.profileGenTitleText}>Account</Text>
                     <View style={styles.profileView}>
-                        <Text style={styles.edtBtnText}>Edit Profile</Text>
-                        <Ionicons name="create" size={32} color="#000" />
+                        <View style={styles.iconSettings}>
+                            <MaterialIcons name="date-range" size={32} color="black" />
+                        </View>
+                    <TextInput style={styles.accountText} value = "Date of Birth" editable = {false}/>
                     </View>
-                </TouchableOpacity>
-            </View>
+                    <View style={styles.profileView}>
+                        <View style={styles.iconSettings}>
+                            <MaterialIcons name="email" size={32} color="black" />
+                        </View>
+                        <TextInput style={styles.accountText} value = "Email/Username" editable = {false}/>
+                    </View>
+                    <View style={styles.profileView}>
+                        <View style={styles.iconSettings}>
+                            <MaterialIcons name="phone" size={32} color="black" />
+                        </View>
+                        <TextInput style={styles.accountText} value = "Phone" editable = {false}/>
+                    </View>
+                    <View style={styles.profileView}>
+                        <View style={styles.iconSettings}>
+                            <MaterialCommunityIcons name="onepassword" size={32} color="black" />
+                        </View>
+                        <TextInput style={styles.accountText} value = "Password" editable = {false}/> 
+                    </View>
+                </View>
+
+                <View>
+                    <Text style={styles.profileVerTitleText}>Verification</Text>
+                        <View style={styles.profileView}>
+                            <View style={styles.iconSettings}>
+                                <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
+                            </View>
+                            <TextInput style={styles.linkText} value = "Verify my Email" editable = {false}/> 
+                        </View>
+                        <View style={styles.profileView}>
+                            <View style={styles.iconSettings}>
+                                <Ionicons name="checkmark-done-circle" size={32} color="black" />
+                            </View>
+                            <TextInput style={styles.linkText} value = "Verify my ID" editable = {false}/> 
+                        </View>
+                        <View style={styles.profileView}>
+                            <View style={styles.iconSettings}>
+                                <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
+                            </View>
+                            <TextInput style={styles.linkText} value = "Verify my Phone" editable = {false}/> 
+                        </View>
+                </View>
+                <View style={styles.edtBtnTitleText} >
+                    <TouchableOpacity style={styles.edtBtn}>
+                        <View style={styles.profileView}>
+                            <Text style={styles.edtBtnText}>Edit Profile</Text>
+                            <Ionicons name="create" size={32} color="#808080" />
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </View>
     );
 };
@@ -96,7 +94,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#e0a5a5",
-        marginBottom: '135%',
+        marginBottom: '0%',
     },
     header: {
         flexDirection:"row",
@@ -109,21 +107,11 @@ const styles = StyleSheet.create({
         flex: 3
     },
     headerText: {
-        color: 'white',
+        color: '#000000',
         marginLeft: '6.5%',
         fontSize: 36,   
         fontWeight: 'bold',
         justifyContent: 'flex-end'
-    },
-    profileVerTitleText: {
-        color: '#000000',
-        fontWeight: 'bold',
-        width: '66%',
-        textAlign: 'left',
-        marginTop: '2%',
-        marginLeft: '11%',
-        marginBottom: '3%',
-        fontSize: 19, 
     },
     profileGenTitleText: {
         color: '#000000',
@@ -135,12 +123,33 @@ const styles = StyleSheet.create({
         marginBottom: '1%',
         fontSize: 19,
     },
+    profileVerTitleText: {
+        color: '#000000',
+        fontWeight: 'bold',
+        width: '66%',
+        textAlign: 'left',
+        marginTop: '2%',
+        marginLeft: '11%',
+        marginBottom: '3%',
+        fontSize: 19, 
+    },
     profileView: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
     },
     accountText: {
+        width: '70%',
+        borderRadius: 15,
+        height: 25,
+        alignItems: 'center',
+        marginLeft: '2%',
+        marginBottom: '3%',
+        marginTop: '4%',
+        justifyContent: 'center'
+    },
+    linkText:{
+        color: '#0000EE',
         width: '70%',
         borderRadius: 15,
         height: 25,
@@ -179,7 +188,7 @@ const styles = StyleSheet.create({
         marginLeft: '-4%',
         marginBottom: '3%',
         justifyContent: 'center',
-        backgroundColor: '#e0a5a5',
+        backgroundColor: '#000',
         color: '#FFFFFF'
     },
     imageCircle: {
