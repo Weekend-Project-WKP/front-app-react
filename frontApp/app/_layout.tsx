@@ -6,8 +6,9 @@ const Layout = () => {
     return <Stack screenOptions={{
     }}>
         <Stack.Screen name='index' options={{ title: '', headerShown: false }} />
+        <Stack.Screen name='profile' options={{ title: '', headerShown: false }} />
         <Stack.Screen name='register' options={{ title: '', headerShown: false }} />
-        {/* <Stack.Screen name='settings' options={{ title: '', headerShown: false }} /> */}
+        <Stack.Screen name='settings' options={{ title: '', headerShown: false }} />
         <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
     </Stack>;
 };

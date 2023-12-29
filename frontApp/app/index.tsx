@@ -63,7 +63,7 @@ const Page = () => {
                     </TouchableOpacity>
                 </View>
 
-                {/* <Button onPress={() => router.push('/settings')} title="Settings" /> */}
+                <Button onPress={() => router.push('/settings')} title="Settings" /> 
 
                 {/* <Button onPress={() => router.push("/register")} title="Open Sign up" />
                 <Link href={"/register"} asChild>

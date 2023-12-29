@@ -10,25 +10,16 @@ const Settings = () => {
         <View style={styles.container}>
             
             <View style={styles.header}>
-                <View style={styles.headerBtn}>
-                    <TouchableOpacity onPress={() => router.push("/register")} >
-                        <View>
-                            <Ionicons name="arrow-back-circle-outline" size={42} color={'#fff'} />
-                        </View>
-                    </TouchableOpacity>
-                </View>
-
                 <View style={styles.header2}>
                     <View>
                         <Text style={styles.headerText}>Settings</Text>
                     </View>
                 </View>
-
             </View>
 
             <View>
             <Text style={styles.settingsTitleText}>General</Text>
-                <TouchableOpacity style={styles.settingsBtn}>
+                <TouchableOpacity style={styles.settingsBtn} onPress={() => router.push("/profile")}>
                     <View style={styles.settingsView}>
                         <View style={styles.iconSettings}>
                             <Ionicons name="person-circle-outline" size={32} color="#000" />
@@ -112,15 +103,10 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         marginBottom: '13%',
         marginTop: '15%',
-        marginLeft: '11%'
+        marginLeft: '34%'
     },
     header2: {
         flex: 3
-    },
-    headerBtn: {
-        flex:1,
-        justifyContent: 'flex-start',
-        color: 'white',
     },
     headerText: {
         color: 'white',
