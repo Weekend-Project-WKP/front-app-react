@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         width: '66%',
         textAlign: 'left',
-        marginTop: '10%',
+        marginTop: '2%',
         marginLeft: '11%',
         marginBottom: '1%',
         fontSize: 19,
@@ -195,6 +195,12 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     edtBtn: {
+        shadowColor: 'rgba(0,0,0, .4)', // IOS
+        shadowOffset: { height: 1, width: 1 }, // IOS
+        shadowOpacity: 1, // IOS
+        shadowRadius: 1, //IOS
+        backgroundColor: '#000000',
+        elevation: 2, // Android
         width: '65%',
         borderRadius: 30,
         height: 50,
@@ -202,8 +208,6 @@ const styles = StyleSheet.create({
         marginLeft: '-4%',
         marginBottom: '3%',
         justifyContent: 'center',
-        backgroundColor: '#000',
-        color: '#FFFFFF'
     },
     imageCircle: {
         borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
