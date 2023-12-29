@@ -88,7 +88,7 @@ const Profile = () => {
                             <TextInput style={styles.linkText} value = "Verify my Phone" editable = {false}/> 
                         </View>
                 </View>
-                <View style={styles.edtBtnTitleText} >
+                <View style={styles.edtBtnView} >
                     <TouchableOpacity style={styles.edtBtn}>
                         <View style={styles.profileView}>
                             <Ionicons name="create" size={32} color="#FFFFFF" />
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         marginTop: '2%',
         marginLeft: '11%',
-        marginBottom: '3%',
+        marginBottom: '1%',
         fontSize: 19, 
     },
     datePicker: {
@@ -181,10 +181,10 @@ const styles = StyleSheet.create({
         marginLeft: '20%',
         marginRight: '0%',
     },
-    edtBtnTitleText: {
+    edtBtnView: {
         width: '66%',
         marginLeft: '17%',
-        marginTop: '5%',
+        marginTop: '2%',
         marginBottom: '3%',
         alignItems: 'center'
     },
