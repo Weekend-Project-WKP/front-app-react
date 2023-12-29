@@ -1,41 +1,52 @@
-import { View, Text, Touchable, TouchableOpacity, TouchableHighlight, Dimensions, StyleSheet, Image, TextInput, ScrollView } from 'react-native';
+import { View, Button, Text, Touchable, TouchableOpacity, TouchableHighlight, Dimensions, StyleSheet, Image, TextInput, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Link, useRouter } from 'expo-router';
 import { Ionicons, MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+
 
 const Profile = () => {
     const router = useRouter();
     const userImage = '../assets/images/GJ-Chillz.jpeg';
     
+   
    {/*<Button title="Go back" onPress={() => router.back()} />*/}
     return (
         <View style={styles.container}>
             
-            <View style={styles.header}>
+            <View>
+                <View style={styles.header}>
 
-                <View style={styles.header2}>
-                    <View>
-                        <Text style={styles.headerText}>Profile</Text>
+                    <View style={styles.header2}>
+                        <View>
+                            <Text style={styles.headerText}>Profile</Text>
+                        </View>
                     </View>
                 </View>
+
+                <TouchableHighlight
+                    style = {styles.imageCircle}
+                    underlayColor = '#ccc'
+                    onPress = { () => alert('Upload an Image!?') } 
+                    >
+                    <Image source={require(userImage)} resizeMode='cover' style={styles.imageCircle2}>
+                    </Image>
+                </TouchableHighlight>
+               
             </View>
 
-            <TouchableHighlight
-                style = {styles.imageCircle}
-                underlayColor = '#ccc'
-                onPress = { () => alert('Upload an Image!?') } 
-                >
-                <Image source={require(userImage)} resizeMode='cover' style={styles.imageCircle2}>
-                </Image>
-            </TouchableHighlight>
-            <ScrollView>
+            <ScrollView style = {styles.scrollView}>
                 <View>
                     <Text style={styles.profileGenTitleText}>Account</Text>
                     <View style={styles.profileView}>
                         <View style={styles.iconSettings}>
                             <MaterialIcons name="date-range" size={32} color="black" />
                         </View>
+                    <View>
+                        
+                    </View>
+                    
                     <TextInput style={styles.accountText} value = "Date of Birth" editable = {false}/>
+                    
                     </View>
                     <View style={styles.profileView}>
                         <View style={styles.iconSettings}>
@@ -61,13 +72,13 @@ const Profile = () => {
                     <Text style={styles.profileVerTitleText}>Verification</Text>
                         <View style={styles.profileView}>
                             <View style={styles.iconSettings}>
-                                <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
+                                <Ionicons name="checkmark-circle-sharp" size={32} color="green" />
                             </View>
                             <TextInput style={styles.linkText} value = "Verify my Email" editable = {false}/> 
                         </View>
                         <View style={styles.profileView}>
                             <View style={styles.iconSettings}>
-                                <Ionicons name="checkmark-done-circle" size={32} color="black" />
+                                <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
                             </View>
                             <TextInput style={styles.linkText} value = "Verify my ID" editable = {false}/> 
                         </View>
@@ -81,8 +92,8 @@ const Profile = () => {
                 <View style={styles.edtBtnTitleText} >
                     <TouchableOpacity style={styles.edtBtn}>
                         <View style={styles.profileView}>
+                            <Ionicons name="create" size={32} color="#FFFFFF" />
                             <Text style={styles.edtBtnText}>Edit Profile</Text>
-                            <Ionicons name="create" size={32} color="#808080" />
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -94,7 +105,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#e0a5a5",
-        marginBottom: '0%',
+       
+    },
+
+    scrollView: {
+        backgroundColor: "#FFFFFF",
     },
     header: {
         flexDirection:"row",
@@ -133,6 +148,10 @@ const styles = StyleSheet.create({
         marginBottom: '3%',
         fontSize: 19, 
     },
+    datePicker: {
+        marginBottom: '-250%',
+        alignItems: 'center'
+    },
     profileView: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -164,20 +183,16 @@ const styles = StyleSheet.create({
         marginRight: '0%',
     },
     edtBtnTitleText: {
-        color: '#FFFFFF',
-        fontWeight: 'bold',
         width: '66%',
-        textAlign: 'left',
         marginLeft: '17%',
         marginTop: '5%',
         marginBottom: '3%',
-        fontSize: 19, 
         alignItems: 'center'
     },
     edtBtnText: {
         color: '#FFFFFF',
         fontWeight: 'bold',
-        width: '45%',
+        width: '42%',
         textAlign: 'center'
     },
     edtBtn: {
@@ -196,6 +211,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * 0.5,
         height: Dimensions.get('window').width * 0.5,
         marginLeft: '25%',
+        marginBottom: '5%',
         backgroundColor:'#f00',
         justifyContent: 'center',
         alignItems: 'center'
