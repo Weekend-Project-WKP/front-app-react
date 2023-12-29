@@ -15,7 +15,6 @@ const Profile = () => {
             
             <View>
                 <View style={styles.header}>
-
                     <View style={styles.header2}>
                         <View>
                             <Text style={styles.headerText}>Profile</Text>
