@@ -1,4 +1,4 @@
-import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native'
+import { StyleSheet, TouchableOpacity, Platform, View } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,7 +9,9 @@ const customHeaderBack = () => {
 
         <SafeAreaView style={styles.safeArea}>
             <TouchableOpacity style={styles.container} onPress={() => router.back()}>
-                <Ionicons name={'arrow-back-circle-sharp'} size={42} color={'#fff'} />
+                <View>
+                    <Ionicons name={'arrow-back-circle-sharp'} size={42} color={'#fff'} />
+                </View>
             </TouchableOpacity>
         </SafeAreaView>
     )
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
         height: 40,
         marginLeft: 20,
         marginTop: 5,
-
+        width: 40,
     },
 });
 
