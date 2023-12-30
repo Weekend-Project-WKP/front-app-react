@@ -8,7 +8,7 @@ const Settings = () => {
 
     return (
         <View style={styles.container}>
-            
+
             <View style={styles.header}>
                 <View style={styles.header2}>
                     <View>
@@ -18,7 +18,7 @@ const Settings = () => {
             </View>
 
             <View>
-            <Text style={styles.settingsTitleText}>General</Text>
+                <Text style={styles.settingsTitleText}>General</Text>
                 <TouchableOpacity style={styles.settingsBtn} onPress={() => router.push("/profile")}>
                     <View style={styles.settingsView}>
                         <View style={styles.iconSettings}>
@@ -31,10 +31,10 @@ const Settings = () => {
             </View>
 
             <View>
-            <Text style={styles.settingsTitleText}>Account</Text>
+                <Text style={styles.settingsTitleText}>Account</Text>
                 <TouchableOpacity style={styles.settingsBtn}>
                     <View style={styles.settingsView}>
-                        
+
                         <View style={styles.iconSettings}>
                             <MaterialCommunityIcons name="cancel" size={32} color="#000" />
                         </View>
@@ -44,7 +44,7 @@ const Settings = () => {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.settingsBtn}>
-                    <View style={styles.settingsView}>  
+                    <View style={styles.settingsView}>
                         <View style={styles.iconSettings}>
                             <Ionicons name="notifications" size={32} color="#000" />
                         </View>
@@ -52,7 +52,7 @@ const Settings = () => {
                         <MaterialIcons name="arrow-forward-ios" size={32} color="#000" />
                     </View>
                 </TouchableOpacity>
-                
+
                 <TouchableOpacity style={styles.settingsBtn}>
                     <View style={styles.settingsView}>
                         <View style={styles.iconSettings}>
@@ -100,9 +100,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#e0a5a5"
     },
     header: {
-        flexDirection:"row",
-        marginBottom: '13%',
-        marginTop: '15%',
+        flexDirection: "row",
+        marginBottom: '10%',
+        marginTop: '1%',
         marginLeft: '34%'
     },
     header2: {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
         color: 'white',
-        fontSize: 36,   
+        fontSize: 36,
         fontWeight: 'bold',
         justifyContent: 'flex-end'
     },
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         marginLeft: '11%',
         marginBottom: '3%',
-        fontSize: 19, 
+        fontSize: 19,
     },
     settingsView: {
         flexDirection: 'row',
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         marginLeft: '17%',
         marginTop: '10%',
         marginBottom: '3%',
-        fontSize: 19, 
+        fontSize: 19,
     },
     logOutBtnText: {
         color: '#FFFFFF',
@@ -176,6 +176,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#BB1313',
         color: '#FFFFFF'
     },
-    
+
 });
 export default Settings;
