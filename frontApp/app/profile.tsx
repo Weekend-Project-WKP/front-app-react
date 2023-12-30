@@ -7,12 +7,12 @@ import { Ionicons, MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/v
 const Profile = () => {
     const router = useRouter();
     const userImage = '../assets/images/GJ-Chillz.jpeg';
-    
-   
-   {/*<Button title="Go back" onPress={() => router.back()} />*/}
+
+
+    {/*<Button title="Go back" onPress={() => router.back()} />*/ }
     return (
         <View style={styles.container}>
-            
+
             <View>
                 <View style={styles.header}>
                     <View style={styles.header2}>
@@ -23,70 +23,70 @@ const Profile = () => {
                 </View>
 
                 <TouchableHighlight
-                    style = {styles.imageCircle}
-                    underlayColor = '#ccc'
-                    onPress = { () => alert('Upload an Image!?') } 
-                    >
+                    style={styles.imageCircle}
+                    underlayColor='#ccc'
+                    onPress={() => alert('Upload an Image!?')}
+                >
                     <Image source={require(userImage)} resizeMode='cover' style={styles.imageCircle2}>
                     </Image>
                 </TouchableHighlight>
-               
+
             </View>
 
-            <ScrollView style = {styles.scrollView}>
+            <ScrollView style={styles.scrollView}>
                 <View>
                     <Text style={styles.profileGenTitleText}>Account</Text>
                     <View style={styles.profileView}>
                         <View style={styles.iconSettings}>
                             <MaterialIcons name="date-range" size={32} color="black" />
                         </View>
-                    <View>
-                        
-                    </View>
-                    
-                    <TextInput style={styles.accountText} value = "Date of Birth" editable = {false}/>
-                    
+                        <View>
+
+                        </View>
+
+                        <TextInput style={styles.accountText} value="Date of Birth" editable={false} />
+
                     </View>
                     <View style={styles.profileView}>
                         <View style={styles.iconSettings}>
                             <MaterialIcons name="email" size={32} color="black" />
                         </View>
-                        <TextInput style={styles.accountText} value = "Email/Username" editable = {false}/>
+                        <TextInput style={styles.accountText} value="Email/Username" editable={false} />
                     </View>
                     <View style={styles.profileView}>
                         <View style={styles.iconSettings}>
                             <MaterialIcons name="phone" size={32} color="black" />
                         </View>
-                        <TextInput style={styles.accountText} value = "Phone" editable = {false}/>
+                        <TextInput style={styles.accountText} value="Phone" editable={false} />
                     </View>
                     <View style={styles.profileView}>
                         <View style={styles.iconSettings}>
                             <MaterialCommunityIcons name="onepassword" size={32} color="black" />
                         </View>
-                        <TextInput style={styles.accountText} value = "Password" editable = {false}/> 
+                        <TextInput style={styles.accountText} value="Password" editable={false} />
                     </View>
                 </View>
 
                 <View>
                     <Text style={styles.profileVerTitleText}>Verification</Text>
-                        <View style={styles.profileView}>
-                            <View style={styles.iconSettings}>
-                                <Ionicons name="checkmark-circle-sharp" size={32} color="green" />
-                            </View>
-                            <TextInput style={styles.linkText} value = "Verify my Email" editable = {false}/> 
+                    <View style={styles.profileView}>
+                        <View style={styles.iconSettings}>
+                            <Ionicons name="checkmark-circle-sharp" size={32} color="green" />
                         </View>
-                        <View style={styles.profileView}>
-                            <View style={styles.iconSettings}>
-                                <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
-                            </View>
-                            <TextInput style={styles.linkText} value = "Verify my ID" editable = {false}/> 
+                        <TextInput style={styles.linkText} value="Verify my Email" editable={false} />
+                    </View>
+                    <View style={styles.profileView}>
+                        <View style={styles.iconSettings}>
+                            <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
                         </View>
-                        <View style={styles.profileView}>
-                            <View style={styles.iconSettings}>
-                                <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
-                            </View>
-                            <TextInput style={styles.linkText} value = "Verify my Phone" editable = {false}/> 
+                        <TextInput style={styles.linkText} value="Verify my ID" editable={false} />
+                    </View>
+                    <View style={styles.profileView}>
+                        <View style={styles.iconSettings}>
+                            <Ionicons name="checkmark-circle-sharp" size={32} color="black" />
                         </View>
+                        <TextInput style={styles.linkText} value="Verify my Phone" editable={false} />
+                    </View>
                 </View>
                 <View style={styles.edtBtnView} >
                     <TouchableOpacity style={styles.edtBtn}>
@@ -104,16 +104,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#e0a5a5",
-       
+
     },
 
     scrollView: {
         backgroundColor: "#FFFFFF",
     },
     header: {
-        flexDirection:"row",
+        flexDirection: "row",
         marginBottom: '1%',
-        marginTop: '15%',
+        marginTop: '1%',
         marginLeft: '33%'
     },
 
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     headerText: {
         color: '#000000',
         marginLeft: '6.5%',
-        fontSize: 36,   
+        fontSize: 36,
         fontWeight: 'bold',
         justifyContent: 'flex-end'
     },
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
         marginTop: '2%',
         marginLeft: '11%',
         marginBottom: '1%',
-        fontSize: 19, 
+        fontSize: 19,
     },
     datePicker: {
         marginBottom: '-250%',
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         marginTop: '4%',
         justifyContent: 'center'
     },
-    linkText:{
+    linkText: {
         color: '#0000EE',
         width: '70%',
         borderRadius: 15,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').width * 0.5,
         marginLeft: '25%',
         marginBottom: '5%',
-        backgroundColor:'#f00',
+        backgroundColor: '#f00',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
         borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
         width: Dimensions.get('window').width * 0.5,
         height: Dimensions.get('window').width * 0.5,
-        backgroundColor:'#f00',
+        backgroundColor: '#f00',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -235,6 +235,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         backgroundColor: '#000000c0',
     },
-    
+
 });
 export default Profile;
