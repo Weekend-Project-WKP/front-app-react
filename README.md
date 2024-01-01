@@ -16,4 +16,8 @@ npx expo install react-native-web react-dom
 npx expo install @react-navigation/drawer react-native-reanimated
 
 npx expo install @react-native-async-storage/async-storage
+
+npm install @supabase/supabase-js react-native-url-polyfill
+npx expo install expo-secure-store
+npx expo install react-native-elements
 ```
