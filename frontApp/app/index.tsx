@@ -11,6 +11,7 @@ import Home from './(tabs)/home';
 
 const Login = () => {
     const [session, setSession] = useState<Session | null>(null)
+    const faceoffImage = '../assets/images/faceoff.png';
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -23,11 +24,24 @@ const Login = () => {
     }, [])
 
     return (
-        <View>
-            {session && session.user ? <Home key={session.user.id} session={session} /> : <Auth />}
+        <View style={styles.container}>
+            <ImageBackground source={require(faceoffImage)} resizeMode="cover" style={styles.image}>
+                {session && session.user ? <Home key={session.user.id} session={session} /> : <Auth />}
+            </ImageBackground>
         </View>
     )
+
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    image: {
+        flex: 1,
+        justifyContent: 'center',
+    }
+});
 //     const router = useRouter();
 //     const faceoffImage = '../assets/images/faceoff.png';
 
