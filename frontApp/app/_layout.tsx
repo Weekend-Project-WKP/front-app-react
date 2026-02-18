@@ -1,17 +1,23 @@
-import { View, Text } from 'react-native';
-import React from 'react';
-import { Stack } from 'expo-router';
-import CustomHeaderBack from '../components/customHeaderBack';
+import "react-native-url-polyfill/auto"; // MUST be first import (Hermes + Supabase fix)
 
-const Layout = () => {
-    return <Stack screenOptions={{
-    }}>
-        <Stack.Screen name='index' options={{ title: '', headerShown: false }} />
-        <Stack.Screen name='register' options={{ title: '', headerShown: false }} />
-        <Stack.Screen name='settings' options={{ title: '', header: () => <CustomHeaderBack /> }} />
-        <Stack.Screen name='profile' options={{ title: '', header: () => <CustomHeaderBack /> }} />
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-    </Stack>;
-};
+import React from "react";
+import { Stack } from "expo-router";
+import { AuthProvider } from "../provider/AuthProvider";
 
-export default Layout;
+export default function RootLayout() {
+  return (
+    <AuthProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        {/* Auth screens */}
+        <Stack.Screen name="index" />
+        <Stack.Screen name="register" />
+
+        {/* Tabs */}
+        <Stack.Screen name="(tabs)" />
+
+        {/* Settings detail stack (profile/privacy/etc.) */}
+        <Stack.Screen name="settings" />
+      </Stack>
+    </AuthProvider>
+  );
+}

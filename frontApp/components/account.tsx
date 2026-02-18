@@ -15,32 +15,46 @@ export default function Account({ session }: { session: Session }) {
     }, [session])
 
     async function getProfile() {
+        setLoading(true);
+
         try {
-            setLoading(true)
-            if (!session?.user) throw new Error('No user on the session!')
+            if (!session?.user?.id) {
+            // Don’t alert here — just skip.
+            return;
+            }
 
             const { data, error, status } = await supabase
-                .from('profiles')
-                .select(`username, website, avatar_url`)
-                .eq('id', session?.user.id)
-                .single()
-            if (error && status !== 406) {
-                throw error
+            .from("profiles")
+            .select("username, website, avatar_url")
+            .eq("id", session.user.id)
+            .maybeSingle(); // avoids throw when row doesn't exist
+
+            if (error) {
+                // Show the real Supabase error message + status code
+                Alert.alert("Profile load error", `${error.message} (status: ${status ?? "n/a"})`);
+                return;
             }
 
-            if (data) {
-                setUsername(data.username)
-                setWebsite(data.website)
-                setAvatarUrl(data.avatar_url)
+            // If no profile row exists yet, don't alert — just show empty UI
+            if (!data) {
+                console.log("No profile row found yet for user:", session.user.id);
+                setUsername("");
+                setWebsite("");
+                setAvatarUrl("");
+                return;
             }
-        } catch (error) {
-            if (error instanceof Error) {
-                Alert.alert(error.message)
-            }
+
+            setUsername(data.username ?? "");
+            setWebsite(data.website ?? "");
+            setAvatarUrl(data.avatar_url ?? "");
+        } catch (e: any) {
+            // Catch truly unexpected errors (network, runtime, etc.)
+            Alert.alert("Unexpected error", e?.message ?? JSON.stringify(e));
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     }
+
 
     async function updateProfile({
         username,
