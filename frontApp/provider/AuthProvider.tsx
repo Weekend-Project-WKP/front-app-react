@@ -1,49 +1,47 @@
-import React, { useState, useEffect, createContext, PropsWithChildren } from 'react'
-import { Session, User } from '@supabase/supabase-js'
-import { supabase } from '../config/initSupabase'
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import type { Session } from "@supabase/supabase-js";
+import { supabase } from "../config/initSupabase";
 
-type AuthProps = {
-    user: User | null
-    session: Session | null
-    initialized?: boolean
-    signOut?: () => void
+type AuthContextType = {
+  session: Session | null;
+  loading: boolean;
+};
+
+const AuthContext = createContext<AuthContextType>({
+  session: null,
+  loading: true,
+});
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [session, setSession] = useState<Session | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+
+    supabase.auth.getSession().then(({ data }) => {
+      if (!mounted) return;
+      setSession(data.session ?? null);
+      setLoading(false);
+    });
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      setSession(nextSession);
+      setLoading(false);
+      console.log("AUTH EVENT:", _event, "SESSION:", nextSession?.user?.id ?? null);
+    });
+
+    return () => {
+      mounted = false;
+      sub.subscription.unsubscribe();
+    };
+  }, []);
+
+  const value = useMemo(() => ({ session, loading }), [session, loading]);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-export const AuthContext = createContext<Partial<AuthProps>>({})
-
-// Custom hook to read the context values
 export function useAuth() {
-    return React.useContext(AuthContext)
-}
-
-export const AuthProvider = ({ children }: PropsWithChildren) => {
-    const [user, setUser] = useState<User | null>()
-    const [session, setSession] = useState<Session | null>(null)
-    const [initialized, setInitialized] = useState<boolean>(false)
-
-    useEffect(() => {
-        // Listen for changes to authentication state
-        const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
-            setSession(session)
-            setUser(session ? session.user : null)
-            setInitialized(true)
-        })
-        return () => {
-            data.subscription.unsubscribe()
-        }
-    }, [])
-
-    // Log out the user
-    const signOut = async () => {
-        await supabase.auth.signOut()
-    }
-
-    const value = {
-        user,
-        session,
-        initialized,
-        signOut,
-    }
-
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return useContext(AuthContext);
 }

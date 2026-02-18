@@ -1,69 +1,89 @@
-import { View, Text, Touchable, TouchableOpacity, StyleSheet, Image, Button, ScrollView, Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { supabase } from '../../config/initSupabase';
-import { Session } from '@supabase/supabase-js'
+import React, { useEffect, useState } from "react";
+import { View, Text, Button, StyleSheet, Alert } from "react-native";
+import { useRouter } from "expo-router";
 
-export default function Home({ session }: { session: Session }) {
-    const router = useRouter();
-    const [loading, setLoading] = useState(true)
-    const [username, setUsername] = useState('')
-    const [website, setWebsite] = useState('')
-    const [avatarUrl, setAvatarUrl] = useState('')
+import { supabase } from "../../config/initSupabase";
+import { useAuth } from "../../provider/AuthProvider";
+import { signOut } from "../../services/auth";
 
-    useEffect(() => {
-        if (session) getProfile()
-    }, [session])
+export default function Home() {
+  const router = useRouter();
+  const { session } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [website, setWebsite] = useState('')
+  const [avatarUrl, setAvatarUrl] = useState('')
+  
+   
+  useEffect(() => {
+    if (session?.user?.id) getProfile();
+  }, [session]);
 
-    async function getProfile() {
-        try {
-            setLoading(true)
-            if (!session?.user) throw new Error('No user on the session!')
+  async function getProfile() {
+    try {
+      setLoading(true);
 
-            const { data, error, status } = await supabase
-                .from('profiles')
-                .select(`username, website, avatar_url`)
-                .eq('id', session?.user.id)
-                .single()
-            if (error && status !== 406) {
-                throw error
-            }
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("username")
+        .eq("id", session?.user?.id)
+        .maybeSingle();
 
-            if (data) {
-                setUsername(data.username)
-                setWebsite(data.website)
-                setAvatarUrl(data.avatar_url)
-            }
-        } catch (error) {
-            if (error instanceof Error) {
-                Alert.alert(error.message)
-            }
-        } finally {
-            setLoading(false)
-        }
+      if (error) {
+        Alert.alert("Profile error", error.message);
+        return;
+      }
+
+      setUsername(data?.username ?? "");
+    } catch (e: any) {
+      Alert.alert("Error", e.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const goToSettingsTab = () => {
+    // !!!!! THIS IS THE CRITICAL FIX
+    router.push("/(tabs)/settings");
+  };
+
+  const logout = async () => {
+    const res = await signOut();
+
+    if (!res.ok) {
+      Alert.alert("Logout failed", res.error);
+      return;
     }
 
-    return (
-        <View>
-            <Text>Home Tab</Text>
-            <Button onPress={() => router.push('/settings')} title="Settings" />
-            <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
-        </View>
-    );
+    router.replace("/");
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Home Tab</Text>
+
+      <Button title="Go to Settings Tab" onPress={goToSettingsTab} />
+
+      <View style={{ height: 12 }} />
+
+      <Button title="Sign Out" onPress={logout} />
+
+      <View style={{ height: 20 }} />
+
+      <Text>Username: {username}</Text>
+      <Text>Loading: {String(loading)}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 40,
-        padding: 12,
-    },
-    verticallySpaced: {
-        paddingTop: 4,
-        paddingBottom: 4,
-        alignSelf: 'stretch',
-    },
-    mt20: {
-        marginTop: 20,
-    },
-})
+  container: {
+    marginTop: 40,
+    padding: 16,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
+});
